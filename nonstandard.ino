@@ -59,6 +59,7 @@ void newlevel() {
 //----------------------------------------------------------------------------
 void showscore() {
   if (infoshow==1 and saucers==-1) {  
+    gb.display.setColor(WHITE);
     if (lives>1) { gb.display.drawBitmap(0,0,playership[0]); }
     if (lives>2) { gb.display.drawBitmap(9,0,playership[0]); }
     gb.display.cursorX=42-2*(score>9)-2*(score>99)-2*(score>999);

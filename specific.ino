@@ -15,8 +15,10 @@ void checkbuttons() {
 //----------------------------------------------------------------------------
 void drawplayership() {
   if (deadcounter == -1) {
+    gb.display.setColor(WHITE);
     gb.display.drawBitmap(shipx,44,playership[0]);
   } else {
+    gb.display.setColor(YELLOW);
     gb.display.drawBitmap(shipx,44,playership[1+invadershotframe]);
     handledeath();
   }
@@ -25,6 +27,7 @@ void drawplayership() {
 void drawplayershot() {
   if (shotx != -1) {
     shoty=shoty-2;
+    gb.display.setColor(YELLOW);
     gb.display.drawLine(shotx,shoty,shotx,shoty+2);
     if (shoty < 0) {
       shotx=-1;
@@ -116,6 +119,7 @@ void drawinvaders() {
   infoshow=1;
   for (int i = 0; i < 40 ; i++) {
     if (invaders[i]!=-1) {
+      gb.display.setColor(ORANGE);
       gb.display.drawBitmap(invaderx[i],invadery[i],invader[invaders[i]+invaderframe[i]]);
       if (invadery[i]<5) {
         infoshow=0;
@@ -150,6 +154,7 @@ void invadershot() {
   for (int i = 0 ; i < 4 ; i++) {
     if (invadershotx[i] != -1) {
       invadershoty[i] = invadershoty[i]+1;
+      gb.display.setColor(RED);
       gb.display.drawBitmap(invadershotx[i],invadershoty[i],bomb[invadershotframe]);
 
   // check collission: invadershot & bunker
@@ -214,6 +219,7 @@ void drawbunkers() {
     }
 
     if (bunkers[i] != -1) {
+      gb.display.setColor(GREEN);
       gb.display.drawBitmap(11+i*18,39,bunker[bunkers[i]]);
     } 
   }
@@ -263,6 +269,7 @@ void movesaucer() {
 //----------------------------------------------------------------------------
 void drawsaucer() {
   if (saucers != -1) {
+    gb.display.setColor(RED);
     gb.display.drawBitmap(saucerx,0,saucer[saucers]);
     if (saucers==1) {
       saucerwait=--saucerwait;
