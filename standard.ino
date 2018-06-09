@@ -1,13 +1,14 @@
 //----------------------------------------------------------------------------
 void showgameover() {
   gb.display.clear();
-  gb.display.setColor(0);
+  gb.display.setColor(BLACK);
   gb.display.fillRect(22,16,39,9);
-  gb.display.setColor(1);
+  gb.display.setColor(BLUE);
   gb.display.cursorX=24;
   gb.display.cursorY=18;
   gb.display.print("GAME OVER");
   gb.display.drawRect(22,16,39,9);
+  gb.display.setColor(WHITE);
   gb.display.cursorX=4;
   gb.display.cursorY=42;
   gb.display.print("PRESS B TO CONTINUE");

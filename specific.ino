@@ -10,7 +10,7 @@ void checkbuttons() {
   }
   if (gb.buttons.pressed(BUTTON_A) and shotx==-1 and deadcounter==-1) {
     shotx=shipx+3;
-    shoty=41;
+    shoty=43;
     // playsoundfx(0,0);
     gb.sound.play("shoot.wav");
   }
@@ -19,10 +19,10 @@ void checkbuttons() {
 void drawplayership() {
   if (deadcounter == -1) {
     gb.display.setColor(WHITE);
-    gb.display.drawBitmap(shipx,44,playership[0]);
+    gb.display.drawBitmap(shipx,46,playership[0]);
   } else {
     gb.display.setColor(YELLOW);
-    gb.display.drawBitmap(shipx,44,playership[1+invadershotframe]);
+    gb.display.drawBitmap(shipx,46,playership[1+invadershotframe]);
     handledeath();
   }
 }
@@ -123,7 +123,10 @@ void drawinvaders() {
   infoshow=1;
   for (int i = 0; i < 40 ; i++) {
     if (invaders[i]!=-1) {
-      gb.display.setColor(ORANGE);
+      if (invaders[i]==0) gb.display.setColor(ORANGE);
+      if (invaders[i]==2) gb.display.setColor(PINK);
+      if (invaders[i]==4) gb.display.setColor(BLUE);
+      if (invaders[i]==6) gb.display.setColor(YELLOW); 
       gb.display.drawBitmap(invaderx[i],invadery[i],invader[invaders[i]+invaderframe[i]]);
       if (invadery[i]<5) {
         infoshow=0;
@@ -180,8 +183,8 @@ void invadershot() {
   // check collission: invadershot & player
         checkl = shipx;
         checkr = shipx+6;
-        checkt = 44;
-        checkb = 47;
+        checkt = 46;
+        checkb = 49;
         if (deadcounter==-1 and invadershotx[i]+1>=checkl and invadershotx[i]<=checkr and invadershoty[i]+3>=checkt and invadershoty[i]<=checkb) {
           deadcounter=60;            
           // playsoundfx(2,2);
@@ -202,7 +205,7 @@ void invadershot() {
         }
 
   // invadershoot on bottom off screen?
-      if (invadershoty[i] > 47) {
+      if (invadershoty[i] > 48) {
         invadershotx[i]=-1;
         invadershoty[i]=-1;
         invadershots=--invadershots; 
