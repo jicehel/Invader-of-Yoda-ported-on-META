@@ -10,6 +10,7 @@
 //----------------------------------------------------------------------------    
 // define variables and constants
 //----------------------------------------------------------------------------    
+# define Maxwhidth 80
 String gamestatus;
 int score;
 int highscore;
@@ -85,6 +86,7 @@ void loop(){
 
     if (gamestatus=="running"){ // game running loop
       gb.display.clear();
+      showscore();
       checkbuttons(); // check buttons and move playership
       drawplayership(); // draw player ship
       drawplayershot(); // move + draw player shoot

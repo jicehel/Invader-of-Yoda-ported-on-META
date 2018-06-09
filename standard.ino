@@ -30,9 +30,11 @@ void showtitle() {
   gb.display.cursorX=66-2*(highscore>9)-2*(highscore>99)-2*(highscore>999);
   gb.display.cursorY=6;
   gb.display.print(highscore);
-  gb.display.drawBitmap(10,13,gamelogo);
+  gb.display.setColor(YELLOW);
+  gb.display.drawBitmap(10,20,gamelogo);
   gb.display.cursorX=0;
-  gb.display.cursorY=42;
+  gb.display.cursorY=56;
+  gb.display.setColor(WHITE);
   gb.display.print(" A:PLAY   MENU:QUIT");
   if (gb.buttons.pressed(BUTTON_A)) {
     gamestatus="newgame";
@@ -42,12 +44,5 @@ void showtitle() {
     // Menu: Pause / Retour à l'écran de titre
   }
 }
-//----------------------------------------------------------------------------
-void playsoundfx(int fxno, int channel) {
-//  gb.sound.command(0,soundfx[fxno][6],0,channel); // set volume
-//  gb.sound.command(1,soundfx[fxno][0],0,channel); // set waveform
-//  gb.sound.command(2,soundfx[fxno][5],-soundfx[fxno][4],channel); // set volume slide
-//  gb.sound.command(3,soundfx[fxno][3],soundfx[fxno][2]-58,channel); // set pitch slide
-//  gb.sound.playNote(soundfx[fxno][1],soundfx[fxno][7],channel); // play note
-}
+
 

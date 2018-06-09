@@ -1,7 +1,9 @@
 //----------------------------------------------------------------------------
 void checkbuttons() {
+  if (shipx < 0) shipx=0;
+  
   if (gb.buttons.repeat(BUTTON_LEFT,1) and shipx>0 and deadcounter==-1) { shipx=--shipx; }      
-  if (gb.buttons.repeat(BUTTON_RIGHT,1) and shipx<78 and deadcounter==-1) { shipx=++shipx; }
+  if (gb.buttons.repeat(BUTTON_RIGHT,1) and shipx<Maxwhidth and deadcounter==-1) { shipx=++shipx; }
   if (gb.buttons.pressed(BUTTON_MENU)) {
     // gb.titleScreen(F("    Yoda's"),gamelogo);
     gamestatus="title";
@@ -9,7 +11,8 @@ void checkbuttons() {
   if (gb.buttons.pressed(BUTTON_A) and shotx==-1 and deadcounter==-1) {
     shotx=shipx+3;
     shoty=41;
-    playsoundfx(0,0);
+    // playsoundfx(0,0);
+    gb.sound.play("shoot.wav");
   }
 }
 //----------------------------------------------------------------------------
@@ -46,7 +49,8 @@ void invaderlogic() {
          invaderctr=0;
          checkdir=1;
          invadersound=++invadersound % 4;
-         playsoundfx(invadersound+4,1);
+         // playsoundfx(invadersound+4,1);
+         gb.sound.play("fastinvader1.wav");
       }
     } while (invaders[invaderctr]==-1);
 
@@ -140,7 +144,8 @@ void drawinvaders() {
       invaders[i]=6;
       shotx=-1;
       shoty=-1;
-      playsoundfx(1,0);
+      // playsoundfx(1,0);
+      gb.sound.play("shoot.wav");
     }  
   }
 }
@@ -179,7 +184,8 @@ void invadershot() {
         checkb = 47;
         if (deadcounter==-1 and invadershotx[i]+1>=checkl and invadershotx[i]<=checkr and invadershoty[i]+3>=checkt and invadershoty[i]<=checkb) {
           deadcounter=60;            
-          playsoundfx(2,2);
+          // playsoundfx(2,2);
+          gb.sound.play("explosion.wav");
         }
 
   //check collission: invadershot & playershoot
@@ -249,7 +255,10 @@ void movesaucer() {
     if (saucerx<=0 or saucerx>=73) {
       saucers=-1;
     }                
-    if (saucerx % 5 == 0) { playsoundfx(3,0); }
+    if (saucerx % 5 == 0) { 
+      // playsoundfx(3,0); 
+      gb.sound.play("ufo.wav"); 
+      }
 
     // check collission: player shot & saucer  
     checkl = saucerx;
@@ -262,7 +271,8 @@ void movesaucer() {
       shotx=-1;
       shoty=-1;
       saucerwait=30;
-      playsoundfx(1,0);
+      // playsoundfx(1,0);
+      gb.sound.play("explosion.wav");
     }
   }
 }
