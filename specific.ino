@@ -11,8 +11,7 @@ void checkbuttons() {
   if (gb.buttons.pressed(BUTTON_A) and shotx==-1 and deadcounter==-1) {
     shotx=shipx+3;
     shoty=43;
-    // playsoundfx(0,0);
-    gb.sound.play("shoot.wav");
+    gb.sound.fx(laser);
   }
 }
 //----------------------------------------------------------------------------
@@ -49,8 +48,7 @@ void invaderlogic() {
          invaderctr=0;
          checkdir=1;
          invadersound=++invadersound % 4;
-         // playsoundfx(invadersound+4,1);
-         gb.sound.play("fastinvader1.wav");
+          gb.sound.fx(inv_move);
       }
     } while (invaders[invaderctr]==-1);
 
@@ -147,8 +145,7 @@ void drawinvaders() {
       invaders[i]=6;
       shotx=-1;
       shoty=-1;
-      // playsoundfx(1,0);
-      gb.sound.play("shoot.wav");
+      gb.sound.fx(laser);
     }  
   }
 }
@@ -187,8 +184,7 @@ void invadershot() {
         checkb = 49;
         if (deadcounter==-1 and invadershotx[i]+1>=checkl and invadershotx[i]<=checkr and invadershoty[i]+3>=checkt and invadershoty[i]<=checkb) {
           deadcounter=60;            
-          // playsoundfx(2,2);
-          gb.sound.play("explosion.wav");
+          gb.sound.fx(explosion);
         }
 
   //check collission: invadershot & playershoot
@@ -260,7 +256,7 @@ void movesaucer() {
     }                
     if (saucerx % 5 == 0) { 
       // playsoundfx(3,0); 
-      gb.sound.play("ufo.wav"); 
+      gb.sound.fx(ufo); 
       }
 
     // check collission: player shot & saucer  
@@ -275,7 +271,7 @@ void movesaucer() {
       shoty=-1;
       saucerwait=30;
       // playsoundfx(1,0);
-      gb.sound.play("explosion.wav");
+      gb.sound.fx(explosion);
     }
   }
 }
