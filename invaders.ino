@@ -13,7 +13,6 @@
 # define Maxwhidth 80
 String gamestatus;
 int score;
-int highscore;
 int lives;
 int gamelevel;
 int shipx;
@@ -49,6 +48,7 @@ int saucerdir;
 int saucers;
 int saucertimer;
 int saucerwait;
+int delayBip;
 
 //----------------------------------------------------------------------------    
 // define images & sounds
@@ -69,6 +69,7 @@ extern const int soundfx[8][8];
 void setup(){
   gb.begin();
   gb.setFrameRate(30);
+  initHighscore();
   gb.pickRandomSeed();
   gamestatus="title";
 }
@@ -110,7 +111,7 @@ void loop(){
           gb.display.drawBitmap(invaderx[i],invadery[i],invader[invaders[i]+invaderframe[i]]);
         }
       }
-      showgameover();
+      saveHighscore(score);
     }
 
   } // end of update

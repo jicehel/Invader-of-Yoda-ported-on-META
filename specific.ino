@@ -48,7 +48,16 @@ void invaderlogic() {
          invaderctr=0;
          checkdir=1;
          invadersound=++invadersound % 4;
+         if (delayBip<=0) {
           gb.sound.fx(inv_move);
+          if (invaderanz < 6) {
+            delayBip = 5;
+            } else if (invaderanz < 11) {
+            delayBip = 3;
+            } if (invaderanz < 21) {
+            delayBip = 2;
+            } 
+         } else { delayBip--; }
       }
     } while (invaders[invaderctr]==-1);
 
@@ -289,4 +298,30 @@ void drawsaucer() {
   }
 }
 //----------------------------------------------------------------------------
+void showtitle() {
+  gb.display.clear();
+  gb.display.setColor(WHITE);
+  gb.display.cursorX=0;
+  gb.display.cursorY=0;   
+  gb.display.print("  LAST         HIGH");
+  gb.display.cursorX=14-2*(score>9)-2*(score>99)-2*(score>999);
+  gb.display.cursorY=6;
+  gb.display.print(score);
+  gb.display.cursorX=66-2*(highscore[0]>9)-2*(highscore[0]>99)-2*(highscore[0]>999);
+  gb.display.cursorY=6;
+  gb.display.print(highscore[0]);
+  gb.display.setColor(YELLOW);
+  gb.display.drawBitmap(10,20,gamelogo);
+  gb.display.cursorX=0;
+  gb.display.cursorY=56;
+  gb.display.setColor(WHITE);
+  gb.display.print(" A:PLAY   MENU:QUIT");
+  if (gb.buttons.pressed(BUTTON_A)) {
+    gamestatus="newgame";
+    gb.sound.playOK();
+  }
+  if (gb.buttons.pressed(BUTTON_MENU)) {
+    // Menu: Pause / Retour à l'écran de titre
+  }
+}
 

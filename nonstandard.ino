@@ -24,6 +24,7 @@ void newlevel() {
   nextxdir=2;
   nextydir=0;
   yeahtimer=0;
+  delayBip=0;
   invadershottimer=60;
   saucertimer=240;
   int down=gamelevel*2;
